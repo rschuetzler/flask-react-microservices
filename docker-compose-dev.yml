@@ -8,7 +8,7 @@ services:
       context: ./users-service
       dockerfile: Dockerfile-dev
     volumes:
-      - .:/usr/src/app
+      - './users-service:/usr/src/app'
     ports:
       - 5001:5000 # Expose ports: Host:Container
     environment:
