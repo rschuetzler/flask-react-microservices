@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify
 
 
@@ -5,10 +6,12 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 
-app.config.from_object('project.config.DevelopmentConfig')
+# Set config
+app_settings = os.getenv('APP_SETTINGS')
+app.config.from_object(app_settings)
 
 
-@app.route('/ping', methods=['GET'])
+@app.route('/users/ping', methods=['GET'])
 def ping_pong():
     return jsonify({
         'status': 'success',

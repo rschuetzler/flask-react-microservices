@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+
+  users-service:
+    container_name: users-service
+    build:
+      context: ./users-service
+      dockerfile: Dockerfile-dev
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 5001:5000 # Expose ports: Host:Container
+    environment:
+      - APP_SETTINGS=project.config.DevelopmentConfig
